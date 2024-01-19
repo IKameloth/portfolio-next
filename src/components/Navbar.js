@@ -42,7 +42,9 @@ const MenuLink = forwardRef((props, ref) => (
   <Link ref={ref} as={NextLink} {...props} />
 ))
 
-const Navbar = ({ props, path }) => {
+const Navbar = props => {
+  const { path } = props
+
   return (
     <Box
       position="fixed"
@@ -77,9 +79,6 @@ const Navbar = ({ props, path }) => {
           <LinkItem href="/projects" path={path}>
             Projects
           </LinkItem>
-          <LinkItem href="/about-me" path={path}>
-            About me
-          </LinkItem>
           <LinkItem href="/contact" path={path}>
             Contact
           </LinkItem>
@@ -96,9 +95,6 @@ const Navbar = ({ props, path }) => {
               <MenuList>
                 <MenuItem as={MenuLink} href="/projects">
                   Projects
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/about-me">
-                  About me
                 </MenuItem>
                 <MenuItem as={MenuLink} href="/contact">
                   Contact

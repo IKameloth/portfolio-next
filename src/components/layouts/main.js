@@ -2,8 +2,16 @@ import React from 'react'
 import { Box, Container } from '@chakra-ui/react'
 import Head from 'next/head'
 import Navbar from '../navbar'
+import Footer from '../Footer'
+import dynamic from 'next/dynamic'
+import VoxelLoader from '../LazyVoxelFigure'
 
-const Main = ({ children }) => {
+const LazyVoxelFigure = dynamic(() => import('../Voxel'), {
+  ssr: false,
+  loading: () => <VoxelLoader />
+})
+
+const Main = ({ children, router }) => {
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -19,9 +27,11 @@ const Main = ({ children }) => {
         <meta property="og:image" content="/card.png" />
         <title>Camilo Matteo - Portfolio</title>
       </Head>
-      <Navbar />
+      <Navbar path={router.asPath} />
       <Container maxW="container.md" pt={14}>
+        <LazyVoxelFigure />
         {children}
+        <Footer />
       </Container>
     </Box>
   )
