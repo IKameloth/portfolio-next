@@ -124,7 +124,7 @@ const Home = () => (
             rightIcon={<ChevronRightIcon />}
             colorScheme="teal"
           >
-            Projects
+            Works
           </Button>
         </Box>
       </Section>
